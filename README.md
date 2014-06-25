@@ -1,6 +1,6 @@
 Simple REST Client for Opera 12
 =======
-Simple REST Client is an extension for Opera to help construct custom
+Simple REST Client is an extension for Opera 12 or 11 to help construct custom
 HTTP requests to directly test your web services.
 
 FEATURES
@@ -16,7 +16,10 @@ FEATURES
 
 CREDITS
 =======
-This extension is based on Jeremy Selier's Chrome extension: 
+This extension is based on Jennart Coopman's Chrome extension: 
+https://github.com/JennartC/Simple-Rest-Client-Opera-Extension
+
+and on Jeremy Selier's Chrome extension: 
 https://github.com/jeremys/Simple-Rest-Client-Chrome-Extension
 
 Auto I18N Library by Rich Tibbett:
