@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" version="1.4" network="public private">
+	<name>Opera REST Client Forked By C Pei</name>
+	<description>Construct custom HTTP requests to directly test your web services.</description>
+  	<author href="https://github.com/tangpeic/" email="chunsheng.pei@gmail.com">Chunsheng Pei</author>
+  	<icon src="icon_64.png"/>
+    <access origin="*" subdomains="true"/>
+</widget>

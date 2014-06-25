@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="options.css">
+  <title id="widget-title">Opera Extensions | REST Client Forked by C Pei</title>
+  <script src="simple-rest-client/jquery.min.js" type="text/javascript"></script>
+  <script text="text/javascript">
+        var min = 0;
+        var max = 400000;
+        if (widget.preferences.responsesize === undefined) {
+            widget.preferences.responsesize = max/10*7.5;
+        }
+
+        $(document).ready( function() {
+            $('#responsesize').attr('min', min).attr('max', max);
+            $('#responsesize').change(function() {
+              if (this.value==min) {
+                widget.preferences.responsesize = Number.NEGATIVE_INFINITY;
+                $('#responsesizeValue').html("always.");
+              } else if (this.value==max) {
+                widget.preferences.responsesize = Number.POSITIVE_INFINITY;
+                $('#responsesizeValue').html("never.");
+              } else {
+                widget.preferences.responsesize = this.value;
+                $('#responsesizeValue').html(this.value+" characters.");
+              }
+            });
+            $('#responsesize').val(widget.preferences.responsesize).trigger('change');
+        });
+    </script>
+</head>
+<body>
+  <header>
+    <img src="icon_64.png">
+    <h1 id="widget-name">Simple REST Client v1.4</h1>
+    <h2>Made by <span id="widget-author">C Pei</h2>
+  </header>
+    
+    
+  <section>
+    <h3>Options:</h3>
+    <fieldset>
+        Switch to basic view when response larger than:<br/>
+        <input id="responsesize" type="range" min="0" max="400000" /><span id="responsesizeValue"></span>
+        <p class="note">
+        Basic view disables content parsing, validations and syntax highlighting and increases performance.
+        </p>
+    </fieldset>
+    
+    
+    <h3>Features:</h3>
+    <fieldset>
+        <ul>
+            <li>Construct custom HTTP requests to directly test your web services.</li>
+            <li>Validates XML (well-formedness), JSON and Javascript.</li>
+            <li>Formats and highlights JSON data (JsonViewer by s-a-s-h)</li>
+            <li>Formats and highlights XML data (XMLDisplay by Lev Muchnik)</li>
+            <li>Preview HTML</li>
+        </ul>
+    </fieldset>    
+    
+    <h3>Credits:</h3>
+    <fieldset>
+        <ul>
+            <li>This extension is based on <a href="https://github.com/JennartC/Simple-Rest-Client-Opera-Extension">Jennart Coopman's opera extension</a>.</li>
+            <li>and <a href="https://github.com/jeremys/Simple-Rest-Client-Chrome-Extension">Jeremy Selier's Chrome extension</a>.</li>
+            <li><a href="https://github.com/richtr/Opera-11-Extensions--Auto-I18N-Library">Auto I18N Library</a> by Rich Tibbett.</li>
+            <li>Status icons coming from <a href="http://commons.wikimedia.org/wiki/Category:Ambox">Wikipedia</a>.</li>
+            <li><a href="http://jasonrayner.deviantart.com/art/Internet-Icon-icns-and-png-130014831">Simple REST Client icon</a> by Jason Rayner.</li>
+            <li><a href="https://addons.opera.com/addons/extensions/details/jsonviewer/1.2/">JSON Viewer</a> by s-a-s-h.</li>
+            <li><a href="http://www.levmuchnik.net/Content/ProgrammingTips/WEB/XMLDisplay/DisplayXMLFileWithJavascript.html">XMLDisplay</a> by Lev Muchnik.</li>
+            <li><a href="http://jsbeautifier.org/">jsbeautifier</a> by Einar Lielmanis.</li>
+        </ul>
+    </fieldset>
+    
+    <footer>
+    <p>2014 &copy; C Pei- <a href="https://github.com/tangpeic/Simple-Rest-Client-Opera-12-Extension">source code</a>
+    <br/>
+    Licensed under the Apache License, Version 2.0</p>
+    </footer>
+</body>
+</html>

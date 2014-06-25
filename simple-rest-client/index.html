@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Opera REST Client forked by C Pei</title>
+    <link rel="shortcut icon" type="image/png" href="icon_32.png">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.9.custom.css" />
+    <script type="text/javascript" src="jquery-ui-1.8.9.custom.min.js" ></script>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery-jsonviewer.css" />
+    <script type="text/javascript" src="jquery-jsonviewer.js" ></script> 
+
+    <link rel="stylesheet" type="text/css" href="css/jquery-xmlviewer.css" />
+    <script type="text/javascript" src="jquery-xmlviewer.js" ></script>
+
+    <script type="text/javascript" src="jquery-fasthtml.js" ></script>
+
+    <link rel="stylesheet" type="text/css" href="prettify/prettify.css" />
+    <script type="text/javascript" src="prettify/prettify.js"></script>
+
+    <script type="text/javascript" src="locales/en/messages.js"></script>
+    <script type="text/javascript" src="i18n_lib.js"></script>
+
+    <script type="text/javascript" src="beautify/beautify.js"></script>
+    <script type="text/javascript" src="beautify/beautify-html.js"></script>
+    <script type="text/javascript" src="jquery.autogrow-textarea.js"></script>
+
+    <script type="text/javascript" src="requester.js"></script>
+  </head>
+
+  <body>
+    <!-- styling hack -->
+    <img src="css/images/icon-bg.png" style="position: absolute; top: 0px; right: 0px; opacity: .3"/>
+
+    <div id="sidebar-toggle">
+        <img src="css/images/tri_arrow_left.png">
+    </div>
+
+    <div id="sidebar" style="overflow: hidden; padding: 0px; width: 350px;">
+
+        <div id="history-options-trash" class="section-options">
+            <span id="history-count">0</span>
+                <img src="css/images/trash-empty.png">
+        </div>
+
+        <div id="sidebar_separate_hr"><hr noshare width="100%" /></div>
+
+        <div class="tab-pane active" id="sidebar-section-history">
+            <ul id="history-items" class="clearfix">
+                <li id="sidebar-request-0" class="sidebar-history-request sidebar-request clearfix">
+                    <div class="request" id="574df8a2-a596-e7a2-4a6c-750f22e8001a">
+                        <span class="label label-method-GET">GET</span>
+                        <span class="request-name">
+                            http://localhost:8888/integrationserver/connection
+                        </span>
+                        <span class="request-history-delete" id="request-history-delete-0"> 
+                            <img src="css/images/delete.png">
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="main" style="padding: 350px; padding-top: 0px; padding-right: 0px">
+
+        <section id="request">
+          <fieldset id="request_field">
+             <h1 class="_msg_">name</h1>
+            <p id="purl">
+              <label for="url" class="_msg_">url</label> 
+              <input type="text" name="url" id="url" tabindex="1">
+            </p>
+            <p id="methods">
+              <label class="_msg_">method</label>
+              <label class="labelvert" for="get"><input class="radio" type="radio" checked="" value="get" name="method" id="get" tabindex="2"> GET</label>
+              <label class="labelvert" for="post"><input class="radio" type="radio" value="post" name="method" id="post" tabindex="2"> POST</label>
+              <label class="labelvert" for="put"><input class="radio" type="radio" value="put" name="method" id="put" tabindex="2"> PUT</label>
+              <label class="labelvert" for="delete"><input class="radio" type="radio" value="delete" name="method" id="delete" tabindex="2"> DELETE</label>
+              <label class="labelvert" for="head"><input class="radio" type="radio" value="head" name="method" id="head" tabindex="2"> HEAD</label>
+              <label class="labelvert" for="options"><input class="radio" type="radio" value="options" name="method" id="options" tabindex="2"> OPTIONS</label>
+            </p>
+
+            <p id="buttons">
+              <input class="_msg_val_" type="button" value="send" id="submit" tabindex="7">
+              <input class="_msg_val_" type="button" value="clear" id="reset">
+              <input class="_msg_val_" id="moreHeaders" type="button" id="moreHeaders" value="Add one header" />
+              <input class="_msg_val_" id="showHeaders" type="button" id="showHeaders" value="Show headers" />
+            </p>
+
+            <div id="separate_hr">
+                <hr noshare width="100%"  />
+            </div>
+
+            <p id="pheaders">
+            </p>
+
+            <p id="data">
+              <label for="postputdata" class="_msg_">data</label>
+              <textarea name="data" id="postputdata" tabindex="6"></textarea>
+            </p>
+          </fieldset>
+        </section>
+        <hr id="sep" />
+        <section id="response">
+          <fieldset>
+            <div id="loader" class="_msg_">processing</div>
+
+            <div id="responsePrint">
+                <ul id="responseList">
+                    <li id="liRespHeaders"><a href="#respHeaders" class="_msg_">headers</a></li>
+                    <li id="liRespData"><a href="#respData" class="_msg_">data</a></li>
+                    <li id="liRespRaw"><a href="#respRaw" class="_msg_">raw<a></li>
+                    <li id="liRespPreview"><a href="#respPreview" class="_msg_">preview</a></li>
+                    <li id="responseStatus"></li>
+                    <li id="validations">
+                        <div id="invalid_xml"><img src="status_5XX.svg" alt="bad_formed_xml"/> <span class="_msg_">bad_formed_xml</span></div>
+                        <div id="valid_xml"><img src="status_2XX.svg" alt="well_formed_xml"/> <span class="_msg_">well_formed_xml</span></div>
+                        <div id="invalid_json"><img src="status_5XX.svg" alt="bad_formed_json"/> <span class="_msg_">bad_formed_json</span></div>
+                        <div id="valid_json"><img src="status_2XX.svg" alt="well_formed_json"/> <span class="_msg_">well_formed_json</span></div>
+                        <div id="invalid_javascript"><img src="status_5XX.svg" alt="bad_formed_javascript"/> <span class="_msg_">bad_formed_javascript</span></div>
+                        <div id="valid_javascript"><img src="status_2XX.svg" alt="well_formed_javascript"/> <span class="_msg_">well_formed_javascript</span></div>
+                    </li>
+                </ul>
+                <div id="respData"></div>
+            </div>
+          </fieldset>
+        </section>
+
+    </div>
+
+    <footer>
+      <p><span class="_msg_">source</span> - <a href="/options.html" target="_blank"><span class="_msg_">preferences</span></a></p>
+    </footer>
+
+  </body>
+  <script text="text/javascript">
+    $("input:first").focus();
+  </script>
+
+</html>

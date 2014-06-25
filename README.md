@@ -17,8 +17,6 @@ FEATURES
 CREDITS
 =======
 This extension is based on Jeremy Selier's Chrome extension: 
-https://github.com/JennartC/Simple-Rest-Client-Opera-Extension
-and
 https://github.com/jeremys/Simple-Rest-Client-Chrome-Extension
 
 Auto I18N Library by Rich Tibbett:
